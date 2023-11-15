@@ -7,7 +7,7 @@ export default class Country{
         this.capital = _country.capital;
         this.lat = _country.latlng[0];
         this.lan = _country.latlng[1];
-        this.lang = _country.languages;
+        this.lang = Object.keys(_country.languages);
         this.borders = _country.borders;
         this.parent = _parent;
     }
