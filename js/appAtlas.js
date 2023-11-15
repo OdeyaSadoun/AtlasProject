@@ -11,14 +11,14 @@ const createAllSmallInfoCountries = () => {
     console.log(country);
     callApiByName(country).then((data) => {
       let country = new Country(".row", data[0]);
-      country.renderSmallInfo();
+      country.renderSmallInfo(showCountry);
     });
   });
 };
 
 const showCountry = (_name) => {
   callApiByName(_name).then((data) => {
-    let country = new Country("#home_space", data);
+    let country = new Country("#home_space", data[0]);
     country.render();
   });
 };
@@ -28,7 +28,5 @@ const callApiByName = async (_name) => {
 
   let response = await fetch(url);
   console.log("resp", response);
-  let data = await response.json();
-  console.log("data", data);
-  return data;
+  return await response.json();
 };

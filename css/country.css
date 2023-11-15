@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+
+header,footer{
+    height: 80px;
+    background: red;
+}
+
+/* main {
+    height: 80vh;
+} */
+
+main .container-info{
+    height:100%;
+}
+
+main .container {
+    height:90%;
+}
+
+
+/* home */
+.country .image_flag_small_info{
+    height: 60%;
+ }
+
+ /* single country */
+ .flag-out{
+    height: 100%;
+    border-left: solid 16px black;
+ }
+
+ .flag{
+    height: 50%;
+    width: 100%;
+ }
+ .flag img{
+    height: 100%;
+    width: inherit;
+ }
