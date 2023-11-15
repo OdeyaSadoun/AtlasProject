@@ -64,6 +64,7 @@ const createAllSmallInfoCountries = () => {
 };
 
 const showCountry = (_name) => {
+  document.querySelector("#home_space").innerHTML = "";
   callApiByName(_name).then((data) => {
     let country = new Country("#home_space", data[0]);
     country.render();

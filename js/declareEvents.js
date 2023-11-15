@@ -6,11 +6,6 @@ export const declareEvents = () => {
       ? (nav_open.style.display = "block")
       : (nav_open.style.display = "none");
   });
-
-  document.querySelector("li").addEventListener("click", () => {
-    console.log("declare");
-    showCountry(document.querySelector("a").innerHTML);
-  })
 };
 
 

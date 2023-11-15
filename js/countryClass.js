@@ -53,7 +53,6 @@ export default class Country{
         `;
 
         country.querySelector("a").addEventListener("click", () =>{
-            document.querySelector("#home_space").innerHTML = "";
             showCountry(this.name);
         })
 
