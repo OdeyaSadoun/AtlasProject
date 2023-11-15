@@ -5,41 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atlas</title>
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
     <link href="./css/country.css" rel="stylesheet" />
+    <link href="./css/general.css" rel="stylesheet" />
+
     <script defer src="./js/appAtlas.js" type="module"></script>
   </head>
   <body>
-    <header class="container-fluid"></header>
-    <main class="container-fluid">
-      <div
-        id="home_space"
-        class="container "
-      >
-        <!-- <div
-          class="map col-md-6 border d-flex align-items-center my-5 px-2"
-        ></div>
-        <div class="country col-md-6 border align-items-center my-5 px-2">
-          <div class="flag-out">
-            <div class="flag">
-              <img src="https://flagcdn.com/w320/gb.png" alt="" />
-            </div>
-            <div class="country_info">
-              <h2 class="display-4 fw-bold text-center pt-4">Israel</h2>
-              <p class="lead px-3">popolation: 900000</p>
-              <p class="lead px-3">capital: jerusalem</p>
-              <p class="lead px-3">language: hebrew</p>
-              <p class="lead px-3">borders: ddd, dddd, dddd.</p>
-            </div>
-          </div>
-        </div> -->
-        <div class="row justify-content-around">
-         
+    <header class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="logo col-auto">
+          <img src="images/logo.jpg" alt="logo" />
         </div>
+        <nav id="nav_open" class="d-lg-flex col ps-4">
+          <ul class="list-inline pt-2">
+            <!-- <li class="list-inline-item pt-2">
+              <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Home</a
+              >
+            </li>
+            <li class="list-inline-item p-3">
+              <a href="#">
+                <i class="fa fa-globe" aria-hidden="true"></i> Israel</a
+              >
+            </li>
+            <li class="list-inline-item p-3">
+              <a href="#">
+                <i class="fa fa-globe" aria-hidden="true"></i> USA</a
+              >
+            </li>
+            <li class="list-inline-item p-3">
+              <a href="#"> <i class="fa fa-globe" aria-hidden="true"></i> UK</a>
+            </li>
+            <li class="list-inline-item p-3">
+              <a href="#">
+                <i class="fa fa-globe" aria-hidden="true"></i> France</a
+              >
+            </li>
+            <li class="list-inline-item p-3">
+              <a href="#">
+                <i class="fa fa-globe" aria-hidden="true"></i> Tahailand</a
+              >
+            </li> -->
+          </ul>
+        </nav>
+        <div
+          id="burger_btn"
+          class="burger d-flex justify-content-end d-lg-none d-sm-inlineblock"
+        >
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <main class="container-fluid">
+      <div id="home_space" class="container">
+        <div class="row justify-content-around"></div>
       </div>
     </main>
 

@@ -1,0 +1,45 @@
+header .logo img {
+  max-height: 80px;
+}
+header nav li a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 992px) {
+  header nav ul {
+    display: grid;
+  }
+
+  header nav {
+    display: none;
+    position: absolute;
+    background: #b5cfe69f;
+    right: 0;
+    top: 100px;
+    z-index: 100;
+  }
+
+  header nav ul li a {
+    display: block;
+    color: #002a4e;
+  }
+
+  header nav ul a:hover {
+    background: rgba(0, 0, 0, 0.411);
+    padding: 8px;
+  }
+
+  header nav ul li {
+    padding: 8px;
+  }
+
+  header .burger {
+    z-index: 888;
+    color: #ffffff;
+  }
+
+  header .burger i {
+    font-size: 2.5em;
+  }
+}

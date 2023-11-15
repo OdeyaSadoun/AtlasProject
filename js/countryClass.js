@@ -24,11 +24,11 @@ export default class Country{
             <img src="${this.flag}" alt="${this.flag_alt}" />
           </div>
           <div class="country_info">
-            <h2 class="display-6 fw-bold text-center pt-4">${this.name}</h2>
-            <p class="lead px-3">Population: ${Number(this.population).toLocaleString()}</p>
-            <p class="lead px-3">Capital: ${this.capital}</p>
-            <p class="lead px-3">Language: ${this.lang}</p>
-            <p class="lead px-3">Borders: ${this.borders}</p>
+            <h2 class="display-6 fw-bold text-center p-4">${this.name}</h2>
+            <p class="lead px-5">Population: ${Number(this.population).toLocaleString()}</p>
+            <p class="lead px-5">Capital: ${this.capital}</p>
+            <p class="lead px-5">Language: ${this.lang}</p>
+            <p class="lead px-5">Borders: ${this.borders}</p>
           </div>
         </div>
       </div>
