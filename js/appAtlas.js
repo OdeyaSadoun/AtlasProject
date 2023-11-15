@@ -4,6 +4,7 @@ const countries_ar = ["Israel", "USA", "United Kingdom", "France", "Thailand"];
 
 window.onload = () => {
   createNavBar();
+  createSearch();
   declareEvents();
   createAllSmallInfoCountries();
 };
@@ -14,8 +15,8 @@ const createNavBar = () => {
 
     li.className = "list-inline-item pt-2 nav_country";
     li.innerHTML = `
-    <a>
-    <i class="fa fa-globe" aria-hidden="true"></i>${country}</a>
+    <a class="text-light p-3 fw-bold">
+    <i class="fa fa-globe p-2" aria-hidden="true"></i>${country}</a>
     `;
     
      li.querySelector("a").addEventListener("click", () => {
@@ -23,36 +24,26 @@ const createNavBar = () => {
        showCountry(country);
      });
 
-    // li.append(a);
-
-    // console.log("after event");
     document.querySelector("ul").append(li);
   });
-
-//  let search = document.createElement("div");
-//  search.className = " p-2";
-
-//  search.innerHTML = `
- 
-//  <input type="text" placeholder="search...">
-//  <button>search</button>
- 
-//  `;
-
-//  div.querySelector("nav").append(search);
-
-  // div.innerHTML += `    
-  //   <div
-  //   id="burger_btn"
-  //   class="burger d-flex justify-content-end d-lg-none d-sm-inlineblock">
-  //   <i class="fa fa-bars"></i>
-  //   </div>
-    
-  //   `;
-
-
-  // document.querySelector("header").append(div);
 };
+
+const createSearch = () => {
+  let div = document.createElement("div");
+  div.className="list-inline-item pt-2 nav_country mx-5"
+  div.innerHTML += `
+
+  <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="search..." aria-label="search" aria-describedby="button-search">
+  <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+
+</div>
+  `;
+
+  document.querySelector("nav").append(div)
+
+
+}
 
 const createAllSmallInfoCountries = () => {
   countries_ar.forEach((country) => {
