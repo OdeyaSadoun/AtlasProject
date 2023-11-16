@@ -11,7 +11,6 @@ export const createAllSmallInfoCountries = (
       return item;
     }
   });
-  //   console.log(new_ar);
   if (new_ar.length == 0) {
     document.querySelector("#home_space").innerHTML =
       `<p class="fw-bold display-6 p-5 m-x">Unknown country name, try again :)</p>`;
@@ -33,7 +32,6 @@ export const createFiveFirstCountries = (
       return item;
     }
   });
-  console.log(new_ar);
   new_ar.forEach((item) => {
     showSmallInfoCountry(item, callApiByName, callApiByCode);
   });
@@ -57,6 +55,6 @@ export const showCountry = async (_name, callApiByName, callApiByCode) => {
       });
     }
     let country = new Country("#home_space", data[0]);
-    country.render(callApiByCode);
+    country.render(callApiByCode, showCountry, callApiByName);
   });
 };

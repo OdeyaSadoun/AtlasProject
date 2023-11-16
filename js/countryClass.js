@@ -13,10 +13,8 @@ export default class Country {
   }
 
   findLanguages(_country) {
-    console.log(_country);
-    console.log("_country.languages", _country.languages);
+   
     if (!_country.languages || Object.keys(_country.languages).length === 0) {
-      console.log("No languages found");
       return undefined;
     }
     // let langs = Object.keys(_country.languages);
@@ -26,13 +24,11 @@ export default class Country {
     } else {
       langs_ar = [_country.languages[Object.keys(_country.languages)[0]]];
     }
-    console.log(langs_ar);
     return langs_ar;
   }
 
-  render(callApiByCode) {
+  render(callApiByCode, showCountry, callApiByName) {
     let div = document.createElement("div");
-    console.log(this.lat, this.lon);
     div.innerHTML = `
       <div class="map col-md-6 d-flex align-items-center my-5 px-2">
         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
@@ -53,29 +49,40 @@ export default class Country {
             ).toLocaleString()}</p>
             <p class="lead px-5">Capital: ${this.capital}</p>
             <p class="lead px-5">Language: ${this.lang}</p>
-            <p class="lead px-5">Borders: ${this.createBordersFromCodeName(
-              callApiByCode
-            )}</p>
+            <p class="lead px-5 borders_countries">Borders: <span></span></p>
           </div>
         </div>
       </div>
       `;
     div.className = "container-info d-flex mx-auto justify-content-between";
+    this.createBordersFromCodeName(callApiByCode, showCountry, callApiByName);
     document.querySelector(this.parent).append(div);
   }
 
-  createBordersFromCodeName(callApiByCode) {
-    let html_borders = "";
-    this.borders.forEach((border) => {
-      callApiByCode(border).then((data) => {
-        html_borders += `
-        <a href="#">${data[0].name.common}</a>
-        `;
+  createBordersFromCodeName(callApiByCode, showCountry, callApiByName) {
+    if(this.borders){
+      this.borders.forEach((border) => {
+        callApiByCode(border).then((data) => {
+          let a = document.createElement("a");
+          a.innerHTML = `
+          <a href="#">${data[0].name.common}</a>
+          `;
+  
+          document.querySelector(".borders_countries span").append(a); 
+  
+          a.addEventListener("click", () => {
+            // document.querySelector("input").value = "";
+            showCountry(data[0].name.common, callApiByName, callApiByCode);
+          });
+        });
+      
       });
+    }
+    else{
     
-    });
-    // console.log("html_borders", html_borders);
-    return html_borders;
+      document.querySelector(".borders_countries span").innerHTML = "none";
+    }
+   
   }
 
   renderSmallInfo(showCountry, callApiByName, callApiByCode) {
@@ -94,7 +101,6 @@ export default class Country {
       showCountry(this.name, callApiByName, callApiByCode);
     });
 
-    console.log(this.parent);
     document.querySelector(this.parent).append(country);
   }
 }

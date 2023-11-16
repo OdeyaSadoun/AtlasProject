@@ -32,7 +32,6 @@ const init = async () => {
 };
 
 const createNavBar = () => {
-  console.log("navbar");
   start_countries_ar.forEach((country) => {
     let li = document.createElement("li");
 
@@ -71,10 +70,7 @@ const callApiByCode = async (_code) => {
   let url = `https://restcountries.com/v3.1/alpha?codes=${_code}&fields=name
   `;
   let response = await fetch(url);
-  console.log("resp",response);
   let data = await response.json();
-  console.log("data",data);
-
   return data;
 };
 

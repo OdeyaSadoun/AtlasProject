@@ -11,7 +11,6 @@ export const declareEvents = (
 
     document.querySelector("#home_space").innerHTML = "";
     let search_val = document.querySelector("input").value;
-    console.log(search_val);
     createAllSmallInfoCountries(
       search_val.toLocaleLowerCase(),
       countries_ar,
