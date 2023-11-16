@@ -1,11 +1,20 @@
-export const declareEvents = () => {
-  // let burger_btn = document.querySelector("#burger_btn");
-  // let nav_open = document.querySelector("#nav_open");
-  // burger_btn.addEventListener("click", function () {
-  //   nav_open.style.display != "block"
-  //     ? (nav_open.style.display = "block")
-  //     : (nav_open.style.display = "none");
-  // });
+export const declareEvents = (createAllSmallInfoCountries) => {
+  // document.querySelector("header .container").append(div);
+
+  document.querySelector("header button").addEventListener("click", () => {
+    let search_val = document.querySelector("input").value;
+    createAllSmallInfoCountries(search_val);
+    document.querySelector("input").value = "";
+  });
+
+  document.querySelector("#id_search").addEventListener("keydown", (e) => {
+    // console.log(e.key);
+   if(e.key == "Enter"){
+    let search_val = document.querySelector("input").value;
+    createAllSmallInfoCountries(search_val);
+    document.querySelector("input").value = "";
+   }
+  });
 };
 
 

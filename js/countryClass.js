@@ -5,9 +5,9 @@ export default class Country{
         this.flag = _country.flags.png;
         this.flag_alt = _country.flags.alt;
         this.capital = _country.capital;
-        this.lat = _country.latlng[0];
-        this.lon = _country.latlng[1];
-        this.lang = Object.keys(_country.languages);
+        this.lat = _country.latlng ? _country.latlng[0] : undefined ;
+        this.lon = _country.latlng ? _country.latlng[1] : undefined ;
+        this.lang = _country.languages ? Object.keys(_country.languages) : undefined ;
         this.borders = _country.borders;
         this.parent = _parent;
     }
