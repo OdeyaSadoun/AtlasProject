@@ -13,7 +13,7 @@ export const createAllSmallInfoCountries = (
   //   console.log(new_ar);
   if (new_ar.length == 0) {
     document.querySelector("#home_space").innerHTML =
-      `<p class="fw-bold display-6">Unknown country name, try again :)</p>`;
+      `<p class="fw-bold display-6 p-5 m-x">Unknown country name, try again :)</p>`;
   } else {
     new_ar.forEach((item) => {
       showSmallInfoCountry(item, callApiByName);
@@ -42,11 +42,11 @@ export const showSmallInfoCountry = (data, callApiByName) => {
   country.renderSmallInfo(showCountry, callApiByName);
 };
 
-export const showCountry = (_name, callApiByName) => {
+export const showCountry = async (_name, callApiByName) => {
   document.querySelector("#home_space").className = "d-block container";
 
   document.querySelector("#home_space").innerHTML = "";
-  callApiByName(_name).then((data) => {
+  await callApiByName(_name).then((data) => {
     if (data.length > 1) {
       data = data.filter((item) => {
         if (item.name.common.toLowerCase() == _name.toLowerCase()) {

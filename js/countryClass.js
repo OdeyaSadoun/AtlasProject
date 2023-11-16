@@ -7,11 +7,27 @@ export default class Country {
     this.capital = _country.capital;
     this.lat = _country.latlng ? _country.latlng[0] : undefined;
     this.lon = _country.latlng ? _country.latlng[1] : undefined;
-    this.lang = _country.languages
-      ? Object.keys(_country.languages)
-      : undefined;
+    this.lang = this.findLanguages(_country);
     this.borders = _country.borders;
     this.parent = _parent;
+  }
+
+  findLanguages(_country) {
+    console.log(_country);
+    console.log("_country.languages", _country.languages);
+    if (!_country.languages || Object.keys(_country.languages).length === 0) {
+      console.log("No languages found");
+      return undefined;
+    }
+    // let langs = Object.keys(_country.languages);
+    let langs_ar = [];
+    if (Object.keys(_country.languages).length > 1) {
+      langs_ar = Object.values(_country.languages);
+    } else {
+      langs_ar = [_country.languages[Object.keys(_country.languages)[0]]];
+    }
+    console.log(langs_ar);
+    return langs_ar;
   }
 
   render() {
@@ -27,7 +43,7 @@ export default class Country {
       </div>
       <div class="country_single col-md-6 align-items-center my-5 px-2">
         <div class="flag-out">
-          <div class="flag border-bottom border-top border-end">
+          <div class="flag border-bottom border-top border-end border-5 border-black">
             <img src="${this.flag}" alt="${this.flag_alt}" />
           </div>
           <div class="country_info">
@@ -46,7 +62,7 @@ export default class Country {
     document.querySelector(this.parent).append(div);
   }
 
-  renderSmallInfo(showCountry, callApiByName) {
+   renderSmallInfo(showCountry, callApiByName) {
     let country = document.createElement("div");
     country.className = "country card col-lg-2 col-md-4 mx-3 my-5  p-3 ";
     country.innerHTML = `

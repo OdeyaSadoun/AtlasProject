@@ -1,3 +1,11 @@
+.center {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
 header .logo img {
   max-height: 9vh;
 }
@@ -9,7 +17,16 @@ header nav ul:hover {
   color: #ffffff;
 }
 
-
+footer{
+  /* min-height: 150px; */
+  font-weight: bolder;
+}
+.icons .fa_icon{
+  font-size: 2em;
+}
+.icons .fa_icon a{
+  color: #002a4e;
+}
 
 @media (max-width: 992px) {
   header nav ul {
