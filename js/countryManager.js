@@ -12,7 +12,7 @@ export const createAllSmallInfoCountries = (_val, countries_ar) => {
   });
 };
 
-export const createFiveFirstCountries = (countries_ar, start_countries_ar) => {
+export const createFiveFirstCountries = (countries_ar, start_countries_ar, callApiByName) => {
   const new_ar = countries_ar.filter((item) => {
     if (start_countries_ar.includes(item.name.common)) {
       return item;
@@ -20,13 +20,13 @@ export const createFiveFirstCountries = (countries_ar, start_countries_ar) => {
   });
   console.log(new_ar);
   new_ar.forEach((item) => {
-    showSmallInfoCountry(item);
+    showSmallInfoCountry(item, callApiByName);
   });
 };
 
-export const showSmallInfoCountry = (data) => {
+export const showSmallInfoCountry = (data, callApiByName) => {
   let country = new Country("#home_space", data);
-  country.renderSmallInfo(showCountry);
+  country.renderSmallInfo(showCountry ,callApiByName);
 };
 
 export const showCountry = (_name, callApiByName) => {

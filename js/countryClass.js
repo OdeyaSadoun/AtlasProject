@@ -46,7 +46,7 @@ export default class Country {
     document.querySelector(this.parent).append(div);
   }
 
-  renderSmallInfo(showCountry) {
+  renderSmallInfo(showCountry, callApiByName) {
     let country = document.createElement("div");
     country.className = "country card col-lg-2 col-md-4 mx-3 my-5  p-3 ";
     country.innerHTML = `
@@ -59,7 +59,7 @@ export default class Country {
         </div>
         `;
     country.querySelector("a").addEventListener("click", () => {
-      showCountry(this.name);
+      showCountry(this.name, callApiByName);
     });
 
     console.log(this.parent);

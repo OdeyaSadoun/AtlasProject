@@ -16,7 +16,7 @@ const init = async() => {
   });
   createNavBar();
   await declareEvents(createAllSmallInfoCountries, countries_ar);
-  createFiveFirstCountries(countries_ar, start_countries_ar);
+  createFiveFirstCountries(countries_ar, start_countries_ar, callApiByName);
 };
 
 const createNavBar = () => {
