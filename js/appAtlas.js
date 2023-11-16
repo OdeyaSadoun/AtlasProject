@@ -31,7 +31,7 @@ const createNavBar = () => {
     `;
 
     li.querySelector("a").addEventListener("click", () => {
-      console.log("event");
+      document.querySelector("input").value = "";
       showCountry(country, callApiByName);
     });
 

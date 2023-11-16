@@ -40,6 +40,7 @@ export const declareEvents = (
     if (e.key == "Enter") {
       document.querySelector("#home_space").innerHTML = "";
       let search_val = document.querySelector("input").value;
+      
       createAllSmallInfoCountries(
         search_val.toLocaleLowerCase(),
         countries_ar,

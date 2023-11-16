@@ -3,19 +3,19 @@
 }
 
 header{
-    height: 80px;
+    height: 10vh;
     background: rgb(183, 215, 233);
 }
 
 footer{
-    height: 60px;
+    height: 5vh;
     background: rgb(183, 215, 233);
 }
 
 
-/* main {
-    height: 80vh;
-} */
+main {
+    min-height: 80vh;
+}
 
 main .container-info{
     height:85vh;
