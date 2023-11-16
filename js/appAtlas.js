@@ -38,11 +38,11 @@ const createNavBar = () => {
 };
 
 const createAllSmallInfoCountries = (_val) => {
-  console.log("before filter");
-  console.log(countries_ar);
+  // console.log("before filter");
+  // console.log(countries_ar);
   const new_ar = countries_ar.filter((item) => {
-    console.log("aaa",item)
-    if(item.name.common.includes(_val)){
+    // console.log("aaa",item)
+    if(item.name.common.toLowerCase().includes(_val)){
       return item;
     }
     });
