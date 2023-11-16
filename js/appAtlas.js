@@ -1,5 +1,7 @@
-import Country from "./countryClass.js";
 import { declareEvents } from "./declareEvents.js";
+import { createFiveFirstCountries } from "./countryManager.js";
+import {createAllSmallInfoCountries} from "./countryManager.js";
+import { showCountry } from "./countryManager.js";
 
 const start_countries_ar = ["Israel", "United States", "United Kingdom", "France", "Thailand"];
 const countries_ar = [];
@@ -13,8 +15,8 @@ const init = async() => {
     })
   });
   createNavBar();
-  await declareEvents(createAllSmallInfoCountries);
-  createFiveFirstCountries();
+  await declareEvents(createAllSmallInfoCountries, countries_ar);
+  createFiveFirstCountries(countries_ar, start_countries_ar);
 };
 
 const createNavBar = () => {
@@ -30,66 +32,10 @@ const createNavBar = () => {
 
     li.querySelector("a").addEventListener("click", () => {
       console.log("event");
-      showCountry(country);
+      showCountry(country, callApiByName);
     });
 
     document.querySelector("ul").append(li);
-  });
-};
-
-const createAllSmallInfoCountries = (_val) => {
-  // console.log("before filter");
-  // console.log(countries_ar);
-  const new_ar = countries_ar.filter((item) => {
-    // console.log("aaa",item)
-    if(item.name.common.toLowerCase().includes(_val)){
-      return item;
-    }
-    });
-  console.log(new_ar);
-  new_ar.forEach(item => {
-    showSmallInfoCountry(item);
-  })
-
-};
-
-const createFiveFirstCountries = () => {
-  console.log(countries_ar);
-  const new_ar = countries_ar.filter((item) => {
-    // console.log("infilte", start_countries_ar);
-    // console.log(item.name.common);
-    if(start_countries_ar.includes(item.name.common)){
-      return item;
-    }
-    });
-  console.log(new_ar);
-  new_ar.forEach(item => {
-    showSmallInfoCountry(item);
-  })
-
-};
-
-
-const showSmallInfoCountry = (data) => {
-  // document.querySelector("#home_space").innerHTML = "";
-    let country = new Country("#home_space", data);
-    country.renderSmallInfo(showCountry);
-};
-
-const showCountry = (_name) => {
-    document.querySelector("#home_space").className = "d-block container";
-
-  document.querySelector("#home_space").innerHTML = "";
-  callApiByName(_name).then((data) => {
-    if (data.length > 1) {
-      data = data.filter((item) => {
-        if (item.name.common.toLowerCase() == _name.toLowerCase()) {
-          return item;
-        }
-      });
-    }
-    let country = new Country("#home_space", data[0]);
-    country.render();
   });
 };
 
@@ -106,7 +52,6 @@ const callApiAllCountries = async () => {
 
   let response = await fetch(url);
   return await response.json()
-
 };
 
 
