@@ -1,11 +1,11 @@
 import Country from "./countryClass.js";
 import { declareEvents } from "./declareEvents.js";
+
 const start_countries_ar = ["Israel", "United States", "United Kingdom", "France", "Thailand"];
 const countries_ar = [];
 
 
-window.onload = async() => {
-  
+const init = async() => {
   await callApiAllCountries()
   .then(data_in => {
     data_in.forEach(item => {
@@ -77,8 +77,9 @@ const showSmallInfoCountry = (data) => {
 };
 
 const showCountry = (_name) => {
+    document.querySelector("#home_space").className = "d-block container";
+
   document.querySelector("#home_space").innerHTML = "";
-  document.querySelector("#home_space").className += "d-block";
   callApiByName(_name).then((data) => {
     if (data.length > 1) {
       data = data.filter((item) => {
@@ -107,3 +108,6 @@ const callApiAllCountries = async () => {
   return await response.json()
 
 };
+
+
+init();
