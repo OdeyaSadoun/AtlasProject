@@ -3,7 +3,8 @@ import Country from "./countryClass.js";
 export const createAllSmallInfoCountries = (
   _val,
   countries_ar,
-  callApiByName
+  callApiByName,
+  callApiByCode
 ) => {
   const new_ar = countries_ar.filter((item) => {
     if (item.name.common.toLowerCase().includes(_val)) {
@@ -16,7 +17,7 @@ export const createAllSmallInfoCountries = (
       `<p class="fw-bold display-6 p-5 m-x">Unknown country name, try again :)</p>`;
   } else {
     new_ar.forEach((item) => {
-      showSmallInfoCountry(item, callApiByName);
+      showSmallInfoCountry(item, callApiByName, callApiByCode);
     });
   }
 };
@@ -24,7 +25,8 @@ export const createAllSmallInfoCountries = (
 export const createFiveFirstCountries = (
   countries_ar,
   start_countries_ar,
-  callApiByName
+  callApiByName, 
+  callApiByCode
 ) => {
   const new_ar = countries_ar.filter((item) => {
     if (start_countries_ar.includes(item.name.common)) {
@@ -33,16 +35,16 @@ export const createFiveFirstCountries = (
   });
   console.log(new_ar);
   new_ar.forEach((item) => {
-    showSmallInfoCountry(item, callApiByName);
+    showSmallInfoCountry(item, callApiByName, callApiByCode);
   });
 };
 
-export const showSmallInfoCountry = (data, callApiByName) => {
+export const showSmallInfoCountry = (data, callApiByName, callApiByCode) => {
   let country = new Country("#home_space", data);
-  country.renderSmallInfo(showCountry, callApiByName);
+  country.renderSmallInfo(showCountry, callApiByName, callApiByCode);
 };
 
-export const showCountry = async (_name, callApiByName) => {
+export const showCountry = async (_name, callApiByName, callApiByCode) => {
   document.querySelector("#home_space").className = "d-block container";
 
   document.querySelector("#home_space").innerHTML = "";
@@ -55,6 +57,6 @@ export const showCountry = async (_name, callApiByName) => {
       });
     }
     let country = new Country("#home_space", data[0]);
-    country.render();
+    country.render(callApiByCode);
   });
 };

@@ -1,9 +1,10 @@
 export const declareEvents = (
   createAllSmallInfoCountries,
   countries_ar,
-  callApiByName
+  callApiByName, 
+  callApiByCode
 ) => {
-  console.log("callApiByName", callApiByName);
+  // console.log("callApiByName", callApiByName);
   document.querySelector("header button").addEventListener("click", () => {
     document.querySelector("#home_space").className =
       "container d-flex flex-wrap justify-content-around";
@@ -14,7 +15,8 @@ export const declareEvents = (
     createAllSmallInfoCountries(
       search_val.toLocaleLowerCase(),
       countries_ar,
-      callApiByName
+      callApiByName,
+      callApiByCode
     );
     document.querySelector("input").value = "";
   });
@@ -27,7 +29,8 @@ export const declareEvents = (
     createAllSmallInfoCountries(
       search_val.toLocaleLowerCase(),
       countries_ar,
-      callApiByName
+      callApiByName,
+      callApiByCode
     );
     if (e.key == "Enter") {
       document.querySelector("input").value = "";

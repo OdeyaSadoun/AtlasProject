@@ -1,23 +1,35 @@
 import { declareEvents } from "./declareEvents.js";
-import { createFiveFirstCountries, createAllSmallInfoCountries, showCountry } from "./countryManager.js";
+import {
+  createFiveFirstCountries,
+  createAllSmallInfoCountries,
+  showCountry,
+} from "./countryManager.js";
 
-
-const start_countries_ar = ["Israel", "United States", "United Kingdom", "France", "Thailand"];
+const start_countries_ar = [
+  "Israel",
+  "United States",
+  "United Kingdom",
+  "France",
+  "Thailand",
+];
 const countries_ar = [];
 
-
-const init = async() => {
-  await callApiAllCountries()
-  .then(data_in => {
-    data_in.forEach(item => {
+const init = async () => {
+  await callApiAllCountries().then((data_in) => {
+    data_in.forEach((item) => {
       countries_ar.push(item);
-    })
+    });
   });
   createNavBar();
-  declareEvents(createAllSmallInfoCountries, countries_ar, callApiByName);
-  createFiveFirstCountries(countries_ar, start_countries_ar, callApiByName);
-};
+  declareEvents(createAllSmallInfoCountries, countries_ar, callApiByName, callApiByCode);
 
+  createFiveFirstCountries(
+    countries_ar,
+    start_countries_ar,
+    callApiByName,
+    callApiByCode
+  );
+};
 
 const createNavBar = () => {
   console.log("navbar");
@@ -25,7 +37,7 @@ const createNavBar = () => {
     let li = document.createElement("li");
 
     li.className = "list-inline-item pt-2 nav_country";
-    li.style.cursor= "pointer";
+    li.style.cursor = "pointer";
     li.innerHTML = `
     <a class="text-secondary p-3 fw-bold">
     <i class="fa fa-globe p-2" aria-hidden="true"></i>${country}</a>
@@ -33,7 +45,7 @@ const createNavBar = () => {
 
     li.querySelector("a").addEventListener("click", () => {
       document.querySelector("input").value = "";
-      showCountry(country, callApiByName);
+      showCountry(country, callApiByName, callApiByCode);
     });
 
     document.querySelector("ul").append(li);
@@ -52,8 +64,18 @@ const callApiAllCountries = async () => {
   let url = `https://restcountries.com/v3.1/all?fields=name,flags`;
 
   let response = await fetch(url);
-  return await response.json()
+  return await response.json();
 };
 
+const callApiByCode = async (_code) => {
+  let url = `https://restcountries.com/v3.1/alpha?codes=${_code}&fields=name
+  `;
+  let response = await fetch(url);
+  console.log("resp",response);
+  let data = await response.json();
+  console.log("data",data);
+
+  return data;
+};
 
 init();

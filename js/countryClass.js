@@ -30,7 +30,7 @@ export default class Country {
     return langs_ar;
   }
 
-  render() {
+  render(callApiByCode) {
     let div = document.createElement("div");
     console.log(this.lat, this.lon);
     div.innerHTML = `
@@ -53,7 +53,9 @@ export default class Country {
             ).toLocaleString()}</p>
             <p class="lead px-5">Capital: ${this.capital}</p>
             <p class="lead px-5">Language: ${this.lang}</p>
-            <p class="lead px-5">Borders: ${this.borders}</p>
+            <p class="lead px-5">Borders: ${this.createBordersFromCodeName(
+              callApiByCode
+            )}</p>
           </div>
         </div>
       </div>
@@ -62,7 +64,21 @@ export default class Country {
     document.querySelector(this.parent).append(div);
   }
 
-   renderSmallInfo(showCountry, callApiByName) {
+  createBordersFromCodeName(callApiByCode) {
+    let html_borders = "";
+    this.borders.forEach((border) => {
+      callApiByCode(border).then((data) => {
+        html_borders += `
+        <a href="#">${data[0].name.common}</a>
+        `;
+      });
+    
+    });
+    // console.log("html_borders", html_borders);
+    return html_borders;
+  }
+
+  renderSmallInfo(showCountry, callApiByName, callApiByCode) {
     let country = document.createElement("div");
     country.className = "country card col-lg-2 col-md-4 mx-3 my-5  p-3 ";
     country.innerHTML = `
@@ -75,7 +91,7 @@ export default class Country {
         </div>
         `;
     country.querySelector("a").addEventListener("click", () => {
-      showCountry(this.name, callApiByName);
+      showCountry(this.name, callApiByName, callApiByCode);
     });
 
     console.log(this.parent);
