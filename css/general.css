@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .center {
   display: flex;
   text-align: center;
@@ -5,63 +9,36 @@
   justify-content: center;
 }
 
+header{
+  height: 9vh;
+  background: rgb(183, 215, 233);
+}
 
 header .logo img {
   max-height: 9vh;
 }
+
 header nav li a {
   text-decoration: none;
 }
 
-header nav ul:hover {
-  color: #ffffff;
+main {
+  min-height: 85vh;
+  background-image: url(../images/map.jpg);
+  background-position: center;
+  /* background-size: cover; */
+}
+
+main .container-info{
+  height:80vh;
+
+}
+
+main .container {
+  height: 100%;
 }
 
 footer{
-  /* min-height: 150px; */
-  font-weight: bolder;
-}
-.icons .fa_icon{
-  font-size: 2em;
-}
-.icons .fa_icon a{
-  color: #002a4e;
-}
-
-@media (max-width: 992px) {
-  header nav ul {
-    display: grid;
-  }
-
-  header nav {
-    display: none;
-    position: absolute;
-    background: #b5cfe69f;
-    right: 0;
-    top: 100px;
-    z-index: 100;
-  }
-
-  header nav ul li a {
-    display: block;
-    color: #002a4e;
-  }
-
-  header nav ul a:hover {
-    background: rgba(0, 0, 0, 0.411);
-    padding: 8px;
-  }
-
-  header nav ul li {
-    padding: 8px;
-  }
-
-  header .burger {
-    z-index: 888;
-    color: #ffffff;
-  }
-
-  header .burger i {
-    font-size: 2.5em;
-  }
+  height: 6vh;
+  background: rgb(183, 215, 233);
 }
