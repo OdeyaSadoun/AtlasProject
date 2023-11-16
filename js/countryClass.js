@@ -6,7 +6,7 @@ export default class Country{
         this.flag_alt = _country.flags.alt;
         this.capital = _country.capital;
         this.lat = _country.latlng[0];
-        this.lan = _country.latlng[1];
+        this.lon = _country.latlng[1];
         this.lang = Object.keys(_country.languages);
         this.borders = _country.borders;
         this.parent = _parent;
@@ -14,10 +14,17 @@ export default class Country{
 
     render(){
         let div = document.createElement("div");
+        console.log(this.lat, this.lon);
         div.innerHTML = `
         <div
         class="map col-md-6 d-flex align-items-center my-5 px-2"
-      ></div>
+      >
+
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            src="https://maps.google.com/maps?q=${this.lat},${this.lon}&hl=en&z=6&amp;output=embed">
+            </iframe>
+           </div>
+
       <div class="country_single col-md-6 align-items-center my-5 px-2">
         <div class="flag-out">
           <div class="flag border-bottom border-top border-end">

@@ -2,21 +2,27 @@
     box-sizing: border-box;
 }
 
-header,footer{
+header{
     height: 80px;
-    background: red;
+    background: rgb(148, 234, 255);
 }
+
+footer{
+    height: 60px;
+    background: rgb(148, 234, 255);
+}
+
 
 /* main {
     height: 80vh;
 } */
 
 main .container-info{
-    height:100%;
+    height:85vh;
 }
 
 main .container {
-    height:75%;
+    height: 100%;
 }
 
 

@@ -30,7 +30,7 @@ const createNavBar = () => {
 
 const createSearch = () => {
   let div = document.createElement("div");
-  div.className = "list-inline-item pt-2 nav_country mx-5";
+  div.className = "list-inline-item pt-2 nav_country";
   div.innerHTML += `
 
   <div class="input-group mb-3">
@@ -40,7 +40,7 @@ const createSearch = () => {
   </div>
   `;
 
-  document.querySelector("nav").append(div);
+  document.querySelector("header .container").append(div);
 
   div.querySelector("button").addEventListener("click", () => {
     console.log("input");
