@@ -1,6 +1,6 @@
 import Country from "./countryClass.js";
 
-export const createAllSmallInfoCountries = (_val, countries_ar) => {
+export const createAllSmallInfoCountries = (_val, countries_ar, callApiByName) => {
   const new_ar = countries_ar.filter((item) => {
     if (item.name.common.toLowerCase().includes(_val)) {
       return item;
@@ -8,7 +8,7 @@ export const createAllSmallInfoCountries = (_val, countries_ar) => {
   });
   console.log(new_ar);
   new_ar.forEach((item) => {
-    showSmallInfoCountry(item);
+    showSmallInfoCountry(item, callApiByName);
   });
 };
 

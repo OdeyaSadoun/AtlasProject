@@ -1,7 +1,6 @@
 import { declareEvents } from "./declareEvents.js";
-import { createFiveFirstCountries } from "./countryManager.js";
-import {createAllSmallInfoCountries} from "./countryManager.js";
-import { showCountry } from "./countryManager.js";
+import { createFiveFirstCountries, createAllSmallInfoCountries, showCountry } from "./countryManager.js";
+
 
 const start_countries_ar = ["Israel", "United States", "United Kingdom", "France", "Thailand"];
 const countries_ar = [];
@@ -15,9 +14,10 @@ const init = async() => {
     })
   });
   createNavBar();
-  await declareEvents(createAllSmallInfoCountries, countries_ar);
+  declareEvents(createAllSmallInfoCountries, countries_ar, callApiByName);
   createFiveFirstCountries(countries_ar, start_countries_ar, callApiByName);
 };
+
 
 const createNavBar = () => {
   console.log("navbar");
