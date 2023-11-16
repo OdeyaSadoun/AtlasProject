@@ -5,6 +5,12 @@ header nav li a {
   text-decoration: none;
 }
 
+header nav ul:hover {
+  color: #ffffff;
+}
+
+
+
 @media (max-width: 992px) {
   header nav ul {
     display: grid;

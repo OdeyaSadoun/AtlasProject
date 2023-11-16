@@ -25,8 +25,9 @@ const createNavBar = () => {
     let li = document.createElement("li");
 
     li.className = "list-inline-item pt-2 nav_country";
+    li.style.cursor= "pointer";
     li.innerHTML = `
-    <a class="text-light p-3 fw-bold">
+    <a class="text-secondary p-3 fw-bold">
     <i class="fa fa-globe p-2" aria-hidden="true"></i>${country}</a>
     `;
 
