@@ -3,22 +3,26 @@
 }
 
 header{
-    height: 10vh;
+    height: 9vh;
     background: rgb(183, 215, 233);
 }
 
 footer{
-    height: 5vh;
+    height: 6vh;
     background: rgb(183, 215, 233);
 }
 
 
 main {
-    min-height: 80vh;
+    min-height: 85vh;
+    background-image: url(../images/map.jpg);
+    background-position: center;
+    /* background-size: cover; */
 }
 
 main .container-info{
-    height:85vh;
+    height:90%;
+
 }
 
 main .container {
