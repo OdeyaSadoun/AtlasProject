@@ -17,3 +17,7 @@
     height: 100%;
     width: inherit;
  }
+
+ .country_single a{
+   text-decoration: none;
+ }

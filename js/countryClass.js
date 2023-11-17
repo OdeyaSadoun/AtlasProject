@@ -44,12 +44,12 @@ export default class Country {
           </div>
           <div class="country_info">
             <h2 class="display-6 fw-bold text-center p-4">${this.name}</h2>
-            <p class="lead px-5">Population: ${Number(
+            <p class="lead px-5"><strong>Population:</strong> ${Number(
               this.population
             ).toLocaleString()}</p>
-            <p class="lead px-5">Capital: ${this.capital}</p>
-            <p class="lead px-5">Language: ${this.lang}</p>
-            <p class="lead px-5 borders_countries">Borders: <span></span></p>
+            <p class="lead px-5"><strong>Capital:</strong> ${this.capital}</p>
+            <p class="lead px-5"><strong>Language:</strong> ${this.lang}</p>
+            <p class="lead px-5 borders_countries"><strong>Borders:</strong> <span></span></p>
           </div>
         </div>
       </div>
@@ -61,12 +61,19 @@ export default class Country {
 
   createBordersFromCodeName(callApiByCode, showCountry, callApiByName) {
     if(this.borders){
-      this.borders.forEach((border) => {
+      this.borders.forEach((border, index) => {
         callApiByCode(border).then((data) => {
           let a = document.createElement("a");
-          a.innerHTML = `
+          let inner = `
           <a href="#">${data[0].name.common}</a>
           `;
+          if(index == this.borders.length - 1){
+            a.innerHTML = `${inner}.`;
+          }
+          else{
+            a.innerHTML = `${inner}, `;
+          }
+          
   
           document.querySelector(".borders_countries span").append(a); 
   
