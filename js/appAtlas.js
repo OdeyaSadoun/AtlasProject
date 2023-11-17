@@ -21,7 +21,12 @@ const init = async () => {
     });
   });
   createNavBar();
-  declareEvents(createAllSmallInfoCountries, countries_ar, callApiByName, callApiByCode);
+  declareEvents(
+    createAllSmallInfoCountries,
+    countries_ar,
+    callApiByName,
+    callApiByCode
+  );
 
   createFiveFirstCountries(
     countries_ar,
@@ -52,7 +57,7 @@ const createNavBar = () => {
 };
 
 const callApiByName = async (_name) => {
-  let url = `https://restcountries.com/v3.1/name/${_name}`;
+  let url = `https://restcountries.com/v3.1/name/${_name}?fields=name,flags,population,capital,latlng,borders,languages`;
 
   let response = await fetch(url);
   let data = await response.json();
@@ -67,8 +72,7 @@ const callApiAllCountries = async () => {
 };
 
 const callApiByCode = async (_code) => {
-  let url = `https://restcountries.com/v3.1/alpha?codes=${_code}&fields=name
-  `;
+  let url = `https://restcountries.com/v3.1/alpha?codes=${_code}&fields=name`;
   let response = await fetch(url);
   let data = await response.json();
   return data;
