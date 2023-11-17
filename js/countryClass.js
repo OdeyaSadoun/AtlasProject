@@ -10,10 +10,10 @@ export default class Country {
     this.lang = this.findLanguages(_country);
     this.borders = _country.borders;
     this.parent = _parent;
+    console.log(_country);
   }
 
   findLanguages(_country) {
-   
     if (!_country.languages || Object.keys(_country.languages).length === 0) {
       return undefined;
     }
@@ -49,47 +49,46 @@ export default class Country {
             ).toLocaleString()}</p>
             <p class="lead px-5"><strong>Capital:</strong> ${this.capital}</p>
             <p class="lead px-5"><strong>Language:</strong> ${this.lang}</p>
-            <p class="lead px-5 borders_countries"><strong>Borders:</strong> <span></span></p>
+            <p class="lead px-5 borders_countries"><strong>Borders:</strong> ${this.createBordersFromCodeName(
+              callApiByCode,
+              showCountry,
+              callApiByName
+            )} <span></span></p>
           </div>
         </div>
       </div>
       `;
     div.className = "container-info d-flex mx-auto justify-content-between";
-    this.createBordersFromCodeName(callApiByCode, showCountry, callApiByName);
+
     document.querySelector(this.parent).append(div);
   }
 
   createBordersFromCodeName(callApiByCode, showCountry, callApiByName) {
-    if(this.borders){
+    if (this.borders && this.borders.length > 0) {
       this.borders.forEach((border, index) => {
         callApiByCode(border).then((data) => {
           let a = document.createElement("a");
           let inner = `
           <a href="#">${data[0].name.common}</a>
           `;
-          if(index == this.borders.length - 1){
+          if (index == this.borders.length - 1) {
             a.innerHTML = `${inner}.`;
-          }
-          else{
+          } else {
             a.innerHTML = `${inner}, `;
           }
-          
-  
-          document.querySelector(".borders_countries span").append(a); 
-  
+
+          document.querySelector(".borders_countries span").append(a);
+
           a.addEventListener("click", () => {
-            // document.querySelector("input").value = "";
             showCountry(data[0].name.common, callApiByName, callApiByCode);
           });
         });
-      
       });
+      return "";
+    } else {
+      console.log("no borders");
+      return "no borders";
     }
-    else{
-    
-      document.querySelector(".borders_countries span").innerHTML = "none";
-    }
-   
   }
 
   renderSmallInfo(showCountry, callApiByName, callApiByCode) {
