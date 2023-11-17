@@ -10,14 +10,12 @@ export default class Country {
     this.lang = this.findLanguages(_country);
     this.borders = _country.borders;
     this.parent = _parent;
-    console.log(_country);
   }
 
   findLanguages(_country) {
     if (!_country.languages || Object.keys(_country.languages).length === 0) {
       return undefined;
     }
-    // let langs = Object.keys(_country.languages);
     let langs_ar = [];
     if (Object.keys(_country.languages).length > 1) {
       langs_ar = Object.values(_country.languages);
@@ -86,7 +84,6 @@ export default class Country {
       });
       return "";
     } else {
-      console.log("no borders");
       return "no borders";
     }
   }

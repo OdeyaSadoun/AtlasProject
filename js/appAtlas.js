@@ -25,7 +25,9 @@ const init = async () => {
     createAllSmallInfoCountries,
     countries_ar,
     callApiByName,
-    callApiByCode
+    callApiByCode,
+    start_countries_ar,
+    createFiveFirstCountries
   );
 
   createFiveFirstCountries(

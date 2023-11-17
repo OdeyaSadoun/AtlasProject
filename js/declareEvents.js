@@ -2,14 +2,22 @@ export const declareEvents = (
   createAllSmallInfoCountries,
   countries_ar,
   callApiByName, 
-  callApiByCode
+  callApiByCode,
+  start_countries_ar,
+  createFiveFirstCountries
 ) => {
-  // console.log("callApiByName", callApiByName);
+  document.querySelector(".logo").addEventListener("click", () =>{
+    makeEmptyPlace();
+    createFiveFirstCountries(
+      countries_ar,
+      start_countries_ar,
+      callApiByName,
+      callApiByCode
+    );
+  })
+  
   document.querySelector("header button").addEventListener("click", () => {
-    document.querySelector("#home_space").className =
-      "container d-flex flex-wrap justify-content-around";
-
-    document.querySelector("#home_space").innerHTML = "";
+    makeEmptyPlace();
     let search_val = document.querySelector("input").value;
     createAllSmallInfoCountries(
       search_val.toLocaleLowerCase(),
@@ -21,9 +29,7 @@ export const declareEvents = (
   });
 
   document.querySelector("#id_search").addEventListener("input", (e) => {
-    document.querySelector("#home_space").className =
-      "container d-flex flex-wrap justify-content-around";
-    document.querySelector("#home_space").innerHTML = "";
+    makeEmptyPlace();
     let search_val = document.querySelector("input").value;
     createAllSmallInfoCountries(
       search_val.toLocaleLowerCase(),
@@ -53,3 +59,9 @@ export const declareEvents = (
     }
   });
 };
+
+const makeEmptyPlace = () => {
+  document.querySelector("#home_space").className =
+  "container d-flex flex-wrap justify-content-around";
+  document.querySelector("#home_space").innerHTML = "";
+}
